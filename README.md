@@ -1,4 +1,4 @@
-# T4N-Laws-Framework
+# The Four Nations: Law Framework
 A CK2 laws feature ported to CK3
 
 # Usage in other mods:
