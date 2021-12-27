@@ -5,7 +5,7 @@ A CK2 laws feature ported to CK3
 Look license
 
 # Compatibility:
-As long as your mod does not changes window_my_realm and cooltips the framework should work without a problems
+As long as your mod does not changes window_my_realm and cooltip the framework should work without a problems
 
 # Credits:
 * TypicalCrusader - Coding and Localisation
