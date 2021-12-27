@@ -1,11 +1,11 @@
-# The Four Nations: Law Framework
+# T4N: Typical's Law Framework
 A CK2 laws feature ported to CK3
 
 # Usage in other mods:
 Look license
 
 # Compatibility:
-As long as your mod does not changes window_my_realm the framework should work without a problems
+As long as your mod does not changes window_my_realm and cooltip the framework should work without a problems
 
 # Credits:
 * TypicalCrusader - Coding and Localisation
