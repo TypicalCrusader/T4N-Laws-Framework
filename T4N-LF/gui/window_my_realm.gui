@@ -239,13 +239,62 @@ window = {
 								layoutpolicy_horizontal = expanding
 								layoutpolicy_vertical = expanding
 								#margin_right = 10
-								#datacontext = "[MyRealmWindow.GetCharacter.GetLiege]"
-								#visible = "[GetPlayer.HasLiege]"
 
 								visible = "[GetPlayer.HasLiege]"
-								text_single = {
-									text = "T4N_THIS_DONT_WORK_RN"
-								}	
+								datamodel = "[MyRealmWindow.GetCharacter.GetLiege.MakeScope.GetList('liege_laws')]"		
+								
+								item = {
+									vbox = {
+										name = "liege_laws_list"
+										layoutpolicy_horizontal = expanding
+										datacontext = "[GetLaw(Concatenate(Scope.GetFlagName , '_law'))]"
+
+											text_label_center = {
+												text = "[Localize(Concatenate(Scope.GetFlagName , '_group'))]" #its memey but eh it fucking works
+											}
+											
+
+											icon_button_decorative = {
+												#datacontext = "[GuiLaw.GetLaw]"
+												#datacontext = "[GetLaw(Concatenate(Scope.GetFlagName , '_law'))]"
+												size = { 60 60 }
+												enabled = "[Or(GuiLaw.CanEnact, GuiLaw.IsEnacted)]"
+												down = "[GetPlayer.HasLiege]"
+												alwaystransparent = "[GetPlayer.HasLiege]"
+												onclick = "[GuiLaw.Enact]"
+												tooltipwidget = { liege_law_tooltip = {} }
+												using = tooltip_below
+
+												icon_button_decorative = {
+													size = { 54 54 }
+													parentanchor = center
+													alwaystransparent = yes
+												}
+
+												button_icon = {
+													visible = "[Not(GuiLaw.IsEnacted)]"
+													texture = "[Law.GetIcon]"
+													parentanchor = center
+													size = { 42 42 }
+													alwaystransparent = yes
+												}
+
+												icon = {
+													visible = "[And( GuiLaw.IsEnacted , Not( GuiLaw.CanEnact ) )]"
+													texture = "[Law.GetIcon]"
+													parentanchor = center
+													size = { 42 42 }
+													alwaystransparent = yes
+
+													using = Master_Button_Modify_Texture
+
+													blockoverride "master_color_frame" {
+														frame = 2
+													}
+												}
+											}
+									}
+								}
 
 							}								
 						}

@@ -1,0 +1,17 @@
+#Typical's Law Framework Tutorial
+#
+#Changed Vanilla Files:
+# window_my_realm_gui.gui
+# cooltip.gui
+#
+#How it works
+#1. all laws name must end with _law
+#2. there must be set a variable list liege_laws on the characters
+#   that holds a list of current laws, the var list target is flag:nameoflaw without _law ending
+#   i know its not the best way to handle it buuut it works
+#3. It just works™️
+
+#Localisation
+#name_of_law_law: "law name"
+#name_of_law_law_effects: "law effects"
+#name_of_law_group: "law group name"
