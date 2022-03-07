@@ -68,24 +68,9 @@ window = {
 						onclick = "[MyRealmWindow.Close]"
 					}
 
-					widget = {
-						layoutpolicy_vertical = growing
-						allow_outside = yes
-						size = { 89 98 }
-
-						coa_realm_big_crown = {
-							parentanchor = top|hcenter
-							position = { 5 5 }
-						}
-					}
-
-					
 					vbox = {
-						margin_top = 50
+						margin_top = 42
 						margin_bottom = 5
-						layoutpolicy_horizontal = expanding
-						layoutpolicy_vertical = expanding
-
 
 						vbox = {
 
@@ -96,25 +81,23 @@ window = {
 								margin_right = 10
 								datacontext = "[MyRealmWindow.GetCharacter.GetLiege]"
 								visible = "[GetPlayer.HasLiege]"
-	
+
 								text_label_left = {
 									text = "MY_REALM_WINDOW_MY_LIEGE"
 									layoutpolicy_horizontal = expanding
 									margin_left = 2
 								}
 
+								expand = {}
+
 								vbox = {
 									layoutpolicy_horizontal = expanding
-	
+
 									text_single = {
 										layoutpolicy_horizontal = expanding
 										text = "[Character.GetUIName]"
 										autoresize = no
 									}
-								}	
-								
-								text_single = {
-									text = "[Character.GetGovernment.GetName]"
 								}
 							}
 
@@ -402,7 +385,7 @@ window = {
 					name = "tab_domain"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
-					visible = "[And( MyRealmWindow.IsShowingDomain , Not( GetVariableSystem.HasValue( 'realm_laws_visible', 'yes' ) ) ) ]"
+					visible = "[And( MyRealmWindow.IsShowingDomain, Not(GetVariableSystem.HasValue( 'realm_laws_visible', 'yes' )))]"
 
 					using = Animation_Tab_Switch
 
@@ -535,7 +518,6 @@ window = {
 																	using = Holding_Mouse_Entry
 
 																	vbox = {
-																		layoutpolicy_horizontal = expanding
 																		margin = { 10 2 }
 
 																		hbox = {
@@ -730,8 +712,6 @@ window = {
 																		}
 
 																		hbox = {
-																			layoutpolicy_horizontal = expanding
-																			layoutpolicy_vertical = expanding
 																			margin = { 10 2 }
 
 																			vbox = {
@@ -813,7 +793,7 @@ window = {
 					name = "tab_vassals"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
-					visible = "[And( MyRealmWindow.IsShowingVassals , Not( GetVariableSystem.HasValue( 'realm_laws_visible', 'yes' ) ) ) ]"
+					visible = "[And( MyRealmWindow.IsShowingVassals, Not(GetVariableSystem.HasValue( 'realm_laws_visible', 'yes' )))]"
 
 					state = {
 						name = _show
@@ -868,12 +848,12 @@ window = {
 							name = "small_government_filters"
 							datamodel = "[MyRealmWindow.GetGovernmentTypeHeaders]"
 							visible = "[GreaterThanOrEqualTo_int32(GetDataModelSize(MyRealmWindow.GetGovernmentTypeHeaders), '(int32)3')]"
-							spacing = 5
+							spacing = 2
 							layoutpolicy_horizontal = expanding
 
 							button_standard_clean = {
 								name = "all_governments"
-								size = { 60 33 }
+								size = { 56 33 }
 								default_format = "#low"
 
 								text = "MRW_GOVERNMENT_FILTER_ALL"
@@ -887,7 +867,7 @@ window = {
 								button_standard_clean = {
 									name = "small_government_filter"
 									datacontext = "[GovernmentTypeHeader.GetGovernmentType]"
-									size = { 100 33 }
+									size = { 96 33 }
 
 									text = "[GovernmentType.GetNameNoTooltip]"
 									default_format = "#low"
@@ -1037,9 +1017,6 @@ window = {
 										text = "MY_REALM_WINDOW_VASSAL_LIMIT_VALUE"
 									}
 								}
-
-
-
 							}
 						}
 					}
@@ -1048,7 +1025,7 @@ window = {
 				### SUCCESSION TAB
 				vbox = {
 					name = "tab_succession"
-					visible = "[And( MyRealmWindow.IsShowingSuccession , Not( GetVariableSystem.HasValue( 'realm_laws_visible', 'yes' ) ) ) ]"
+					visible = "[And( MyRealmWindow.IsShowingSuccession, Not(GetVariableSystem.HasValue( 'realm_laws_visible', 'yes' )))]"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
 
@@ -1090,7 +1067,7 @@ window = {
 										text_single = {
 											layoutpolicy_horizontal = growing
 											max_width = 350
-											text = "[GuiLawGroup.GetLawGroup.GetNameSingular]:"
+											raw_text = "[GuiLawGroup.GetLawGroup.GetNameSingular]:"
 										}
 
 										text_single = {
@@ -1566,7 +1543,6 @@ window = {
 												datacontext = "[TitleItem.GetTitle]"
 
 												hbox = {
-													layoutpolicy_vertical = expanding
 													spacing = 10
 
 													coa_title_small_crown = {
@@ -1616,7 +1592,7 @@ window = {
 				}
 
 				vbox = {
-					visible = "[And( Or( MyRealmWindow.IsShowingDomain, MyRealmWindow.IsShowingVassals) , Not( GetVariableSystem.HasValue( 'realm_laws_visible', 'yes' ) ) ) ]"
+					visible = "[Or( MyRealmWindow.IsShowingDomain, MyRealmWindow.IsShowingVassals)]"
 					layoutpolicy_horizontal = expanding
 					margin = { 15 5 }
 					margin_bottom = 15
@@ -1688,10 +1664,9 @@ window = {
 								using = Status_Highlight
 							}
 
-							icon = {
+							warning_icon = {
 								visible = "[MyRealmWindow.IsOverDomainLimit]"
 								size = { 25 25 }
-								texture = "gfx/interface/icons/symbols/icon_warning.dds"
 								tooltip = "[Character.GetDomainLimitTooltip]"
 							}
 
@@ -1742,10 +1717,9 @@ window = {
 								using = Status_Highlight
 							}
 
-							icon = {
+							warning_icon = {
 								visible = "[GreaterThan_int32( Character.GetNumVassalsTowardsLimit, Character.GetVassalLimit )]"
 								size = { 25 25 }
-								texture = "gfx/interface/icons/symbols/icon_warning.dds"
 								tooltip = "[Character.GetVassalLimitTooltip]"
 							}
 
